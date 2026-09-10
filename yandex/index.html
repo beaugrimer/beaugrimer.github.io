@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YANDEX浏览器进入-入口说明、访问方法与常见问题指南</title>
+<meta name="description" content="YANDEX浏览器进入相关说明，介绍Yandex Browser的官方入口识别、下载安装、首次启动设置、账号登录同步以及打不开或无法进入时的排查思路，帮助用户安全顺利地使用浏览器。">
+<meta name="keywords" content="YANDEX浏览器进入,Yandex Browser入口,Yandex浏览器下载,Yandex浏览器登录,浏览器访问方法">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --bg:#f5f7fb;
+  --surface:#ffffff;
+  --ink:#16181d;
+  --ink-soft:#4a5163;
+  --line:#e2e6ef;
+  --brand:#ffcc00;
+  --brand-deep:#1b1e26;
+  --accent:#e03a3a;
+  --accent-soft:#fff2f2;
+  --radius:14px;
+  --shadow:0 6px 24px rgba(22,24,29,.07);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  font-size:16px;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;}
+.wrap{
+  width:100%;
+  max-width:1160px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-height:66px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:700;
+  font-size:19px;
+  letter-spacing:.2px;
+}
+.logo-mark{
+  width:34px;
+  height:34px;
+  border-radius:9px;
+  background:linear-gradient(140deg,var(--brand) 0%,#ffb300 100%);
+  color:#1b1e26;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  font-weight:800;
+  box-shadow:0 3px 10px rgba(255,179,0,.35);
+}
+.logo small{
+  display:block;
+  font-size:11px;
+  font-weight:500;
+  color:var(--ink-soft);
+  letter-spacing:.6px;
+}
+.main-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+}
+.main-nav a{
+  padding:8px 13px;
+  border-radius:9px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  transition:.18s;
+}
+.main-nav a:hover{
+  background:#f0f3f9;
+  color:var(--ink);
+}
+.nav-toggle{
+  display:none;
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:9px;
+  padding:7px 11px;
+  font-size:14px;
+  cursor:pointer;
+  color:var(--ink-soft);
+}
+
+/* ---------- hero ---------- */
+.hero{
+  background:
+    radial-gradient(1000px 420px at 88% -10%,rgba(255,204,0,.30),transparent 62%),
+    linear-gradient(180deg,#ffffff 0%,#f7f9fd 100%);
+  border-bottom:1px solid var(--line);
+  padding:56px 0 46px;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.35fr 1fr;
+  gap:44px;
+  align-items:center;
+}
+.hero h1{
+  font-size:clamp(27px,3.6vw,40px);
+  line-height:1.28;
+  margin:0 0 16px;
+  letter-spacing:-.4px;
+}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(transparent 62%,rgba(255,204,0,.85) 62%);
+  padding:0 2px;
+}
+.hero p.lead{
+  font-size:16.5px;
+  color:var(--ink-soft);
+  margin:0 0 24px;
+  max-width:620px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 22px;
+  border-radius:11px;
+  font-size:15px;
+  font-weight:600;
+  border:1px solid transparent;
+  cursor:pointer;
+  transition:.2s;
+}
+.btn-primary{
+  background:var(--brand-deep);
+  color:#fff;
+}
+.btn-primary:hover{background:#2c313d;}
+.btn-ghost{
+  background:#fff;
+  border-color:var(--line);
+  color:var(--ink);
+}
+.btn-ghost:hover{border-color:#c8cfdd;background:#fafbfe;}
+.hero-note{
+  margin-top:18px;
+  font-size:13px;
+  color:#7a8194;
+}
+.hero-panel{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:22px;
+}
+.hero-panel h2{
+  font-size:15px;
+  margin:0 0 14px;
+  letter-spacing:.4px;
+  color:var(--ink-soft);
+  font-weight:600;
+}
+.step-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  counter-reset:step;
+}
+.step-list li{
+  position:relative;
+  padding:0 0 14px 40px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+}
+.step-list li:last-child{padding-bottom:0;}
+.step-list li::before{
+  counter-increment:step;
+  content:counter(step);
+  position:absolute;
+  left:0;
+  top:1px;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:var(--accent-soft);
+  color:var(--accent);
+  font-size:13px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.step-list li strong{color:var(--ink);font-weight:600;}
+
+/* ---------- generic section ---------- */
+.section{padding:52px 0;}
+.section-head{
+  margin-bottom:26px;
+}
+.section-head h2{
+  font-size:clamp(21px,2.4vw,27px);
+  margin:0 0 8px;
+  letter-spacing:-.2px;
+}
+.section-head p{
+  margin:0;
+  color:var(--ink-soft);
+  font-size:15px;
+  max-width:760px;
+}
+.alt-bg{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+/* ---------- feature cards ---------- */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:24px 22px;
+  box-shadow:var(--shadow);
+  transition:.2s;
+}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(22,24,29,.10);}
+.card .ico{
+  width:42px;
+  height:42px;
+  border-radius:11px;
+  background:#fff7d6;
+  color:#8a6a00;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:19px;
+  margin-bottom:14px;
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:17px;
+}
+.card p{
+  margin:0;
+  font-size:14.5px;
+  color:var(--ink-soft);
+}
+
+/* ---------- method table ---------- */
+.table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:620px;
+  font-size:14.5px;
+}
+th,td{
+  text-align:left;
+  padding:14px 18px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+}
+th{
+  background:#f8fafd;
+  font-weight:600;
+  color:var(--ink);
+  white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#fcfdff;}
+td .tag{
+  display:inline-block;
+  font-size:12px;
+  padding:2px 9px;
+  border-radius:20px;
+  background:#eef2f9;
+  color:#4a5163;
+  white-space:nowrap;
+}
+
+/* ---------- split blocks ---------- */
+.split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:26px;
+  align-items:start;
+}
+.panel{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px 24px;
+  box-shadow:var(--shadow);
+}
+.panel h3{
+  margin:0 0 12px;
+  font-size:18px;
+}
+.panel ul{
+  margin:0;
+  padding-left:20px;
+  color:var(--ink-soft);
+  font-size:14.8px;
+}
+.panel ul li{margin-bottom:9px;}
+.panel ul li:last-child{margin-bottom:0;}
+.panel ul li strong{color:var(--ink);}
+
+/* ---------- checklist ---------- */
+.check-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.check-list li{
+  position:relative;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:16px 18px 16px 46px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  box-shadow:var(--shadow);
+}
+.check-list li::before{
+  content:"✓";
+  position:absolute;
+  left:16px;
+  top:15px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#e7f6ec;
+  color:#1f8a4c;
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+.check-list li strong{display:block;color:var(--ink);margin-bottom:3px;font-size:15px;}
+
+/* ---------- warning ---------- */
+.warn{
+  border:1px solid #ffd9d9;
+  background:#fff6f6;
+  border-radius:var(--radius);
+  padding:20px 22px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+.warn .w-ico{
+  flex:none;
+  width:34px;height:34px;
+  border-radius:9px;
+  background:#ffe3e3;
+  color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;
+}
+.warn h3{margin:0 0 6px;font-size:16.5px;}
+.warn p{margin:0;font-size:14.5px;color:#6d4a4a;}
+
+/* ---------- faq ---------- */
+.faq{
+  display:grid;
+  gap:12px;
+}
+.faq details{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:0 20px;
+  box-shadow:var(--shadow);
+  transition:.2s;
+}
+.faq details[open]{
+  border-color:#cfd8ea;
+}
+.faq summary{
+  cursor:pointer;
+  list-style:none;
+  padding:17px 30px 17px 0;
+  font-weight:600;
+  font-size:15.5px;
+  position:relative;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{
+  content:"+";
+  position:absolute;
+  right:2px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:20px;
+  color:#9aa3b6;
+  font-weight:400;
+  transition:.2s;
+}
+.faq details[open] summary::after{
+  content:"–";
+  color:var(--accent);
+}
+.faq .answer{
+  padding:0 0 18px;
+  font-size:14.6px;
+  color:var(--ink-soft);
+  border-top:1px dashed var(--line);
+  margin-top:-2px;
+  padding-top:14px;
+}
+
+/* ---------- related ---------- */
+.related{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.related a{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:18px;
+  font-size:14.5px;
+  color:var(--ink-soft);
+  box-shadow:var(--shadow);
+  transition:.2s;
+  display:block;
+}
+.related a:hover{border-color:#cfd8ea;transform:translateY(-2px);}
+.related a strong{display:block;color:var(--ink);margin-bottom:5px;font-size:15px;}
+
+/* ---------- footer ---------- */
+.site-footer{
+  background:var(--brand-deep);
+  color:#b9bfcd;
+  padding:44px 0 26px;
+  margin-top:10px;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr;
+  gap:30px;
+  padding-bottom:26px;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+.site-footer h4{
+  color:#fff;
+  font-size:15px;
+  margin:0 0 12px;
+  font-weight:600;
+}
+.site-footer p{
+  margin:0;
+  font-size:14px;
+  line-height:1.8;
+  color:#98a0b2;
+}
+.footer-links{
+  list-style:none;
+  margin:0;
+  padding:0;
+  font-size:14px;
+}
+.footer-links li{margin-bottom:9px;}
+.footer-links a{color:#98a0b2;transition:.18s;}
+.footer-links a:hover{color:var(--brand);}
+.copyright{
+  padding-top:18px;
+  font-size:13px;
+  color:#7d8598;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:30px;}
+  .card-grid{grid-template-columns:repeat(2,1fr);}
+  .related{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:720px){
+  .main-nav{
+    display:none;
+    position:absolute;
+    top:66px;
+    left:0;
+    right:0;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    flex-direction:column;
+    padding:10px 16px 16px;
+    box-shadow:0 12px 24px rgba(22,24,29,.08);
+  }
+  .main-nav.open{display:flex;}
+  .main-nav a{padding:11px 12px;}
+  .nav-toggle{display:inline-block;}
+  .hero{padding:38px 0 34px;}
+  .section{padding:40px 0;}
+  .card-grid{grid-template-columns:1fr;}
+  .split{grid-template-columns:1fr;}
+  .check-list{grid-template-columns:1fr;}
+  .related{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;gap:22px;}
+  .copyright{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top">
+      <span class="logo-mark">Y</span>
+      <span>Yandex 浏览指南
+        <small>入口 · 进入 · 使用</small>
+      </span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="展开导航">菜单</button>
+    <nav class="main-nav" id="mainNav" aria-label="主导航">
+      <a href="#enter">进入方式</a>
+      <a href="#download">下载安装</a>
+      <a href="#firstrun">首次设置</a>
+      <a href="#account">账号同步</a>
+      <a href="#trouble">打不开排查</a>
+      <a href="#safe">安全提示</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>YANDEX浏览器进入：从<em>官方入口</em>到顺利使用的完整说明</h1>
+        <p class="lead">
+          很多人搜索“YANDEX浏览器进入”，真正想知道的是三件事：从哪里进入才是官方渠道、进入后怎么完成首次设置、以及进不去时应该怎么排查。本文按这个顺序把流程讲清楚，帮助你在电脑和手机上都能正常打开并使用 Yandex Browser。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#enter">查看进入方式</a>
+          <a class="btn btn-ghost" href="#trouble">进入失败怎么办</a>
+        </div>
+        <p class="hero-note">提示：请始终通过官方渠道获取安装包，避免使用来源不明的第三方“加速版”“修改版”。</p>
+      </div>
+
+      <aside class="hero-panel">
+        <h2>四步快速进入</h2>
+        <ol class="step-list">
+          <li><strong>确认渠道</strong>：通过 Yandex 官方站点获取浏览器，而非陌生下载站。</li>
+          <li><strong>安装完成</strong>：按系统提示完成安装，注意勾选项，避免捆绑组件。</li>
+          <li><strong>首次启动</strong>：选择默认搜索引擎、是否导入其他浏览器数据。</li>
+          <li><strong>登录同步</strong>：可选登录 Yandex 账号，同步书签、密码与标签页。</li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 进入方式 -->
+  <section class="section" id="enter">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Yandex 浏览器的常见“进入”方式</h2>
+        <p>“进入”在不同场景下含义不同：可能是找到官网入口，可能是打开已安装的浏览器，也可能是登录账号。下面按场景分别说明。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>进入场景</th>
+              <th>推荐做法</th>
+              <th>说明</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>首次获取浏览器</td>
+              <td>访问 Yandex 官方浏览器页面</td>
+              <td>官网会根据你的操作系统自动推荐对应版本，是获取安装包最稳妥的方式。<span class="tag">推荐</span></td>
+            </tr>
+            <tr>
+              <td>已在电脑安装</td>
+              <td>点击桌面图标或开始菜单中的 Yandex</td>
+              <td>若图标丢失，可在系统应用列表或安装目录中重新创建快捷方式。</td>
+            </tr>
+            <tr>
+              <td>手机端使用</td>
+              <td>通过应用商店搜索 Yandex Browser</td>
+              <td>请核对开发者名称与应用图标，避免下载到同名仿冒应用。</td>
+            </tr>
+            <tr>
+              <td>登录账号</td>
+              <td>浏览器右上角头像处登录 Yandex 账号</td>
+              <td>登录后可同步书签、历史、密码与打开的标签页，属于可选功能。</td>
+            </tr>
+            <tr>
+              <td>访问特定页面</td>
+              <td>在地址栏输入网址后回车</td>
+              <td>若页面打不开，先区分是浏览器问题还是网络与目标站点问题。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 功能特点 -->
+  <section class="section alt-bg">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>进入之后，Yandex Browser 主要提供哪些能力</h2>
+        <p>了解基本功能，有助于判断它是否符合你的使用习惯，而不是盲目更换浏览器。</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <div class="ico">⌨</div>
+          <h3>地址栏与搜索合一</h3>
+          <p>地址栏既可输入网址，也可直接输入关键词搜索，默认搜索引擎可在设置中随时更换，不影响正常上网。</p>
+        </article>
+        <article class="card">
+          <div class="ico">🛡</div>
+          <h3>内置基础安全防护</h3>
+          <p>提供对恶意网站与钓鱼页面的拦截提示，并可对下载文件进行风险检查，属于浏览器常见的安全能力。</p>
+        </article>
+        <article class="card">
+          <div class="ico">🔄</div>
+          <h3>跨设备同步</h3>
+          <p>登录账号后可在电脑与手机之间同步书签、密码、历史记录和标签页，方便多设备切换使用。</p>
+        </article>
+        <article class="card">
+          <div class="ico">🧩</div>
+          <h3>扩展与翻译</h3>
+          <p>支持安装扩展程序，并提供网页翻译功能，对浏览非中文页面有一定帮助。</p>
+        </article>
+        <article class="card">
+          <div class="ico">🎭</div>
+          <h3>外观与主题</h3>
+          <p>可更换背景、主题色与标签页样式，界面元素支持一定程度的个性化调整。</p>
+        </article>
+        <article class="card">
+          <div class="ico">⚙</div>
+          <h3>隐私相关选项</h3>
+          <p>提供无痕模式、跟踪保护等设置项，具体开关位置随版本更新可能略有差异。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载安装 -->
+  <section class="section" id="download">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>下载与安装：避免进入错误来源</h2>
+        <p>安装环节是出现问题最多的一步。选对来源、看清安装选项，能减少后续大量麻烦。</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>电脑端安装建议</h3>
+          <ul>
+            <li><strong>来源优先</strong>：优先使用 Yandex 官方页面提供的安装程序。</li>
+            <li><strong>核对系统版本</strong>：确认下载的是 Windows、macOS 还是 Linux 对应版本。</li>
+            <li><strong>留意附加选项</strong>：安装过程中若出现捆绑软件勾选项，按需取消。</li>
+            <li><strong>默认浏览器</strong>：安装后可自行决定是否设为默认浏览器，并非强制。</li>
+            <li><strong>权限提示</strong>：系统弹出的权限请求，请确认来源后允许。</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>手机端安装建议</h3>
+          <ul>
+            <li><strong>应用商店优先</strong>：通过官方应用商店搜索安装，便于后续更新。</li>
+            <li><strong>核对开发者</strong>：确认应用开发者信息与官方一致，图标、名称无异常。</li>
+            <li><strong>权限合理</strong>：浏览器通常不需要与功能无关的敏感权限。</li>
+            <li><strong>及时更新</strong>：保持版本更新有助于修复已知问题。</li>
+            <li><strong>卸载干净</strong>：不再使用时通过系统卸载入口移除，避免残留。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 首次设置 -->
+  <section class="section alt-bg" id="firstrun">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>首次进入后的设置要点</h2>
+        <p>第一次打开浏览器时，几个选项会明显影响后续体验，建议按自己的习惯一次性设置好。</p>
+      </div>
+      <ul class="check-list">
+        <li>
+          <strong>选择默认搜索引擎</strong>
+          可在设置中更换，选择你日常使用更顺手的搜索服务即可。
+        </li>
+        <li>
+          <strong>是否导入其他浏览器数据</strong>
+          需要保留原有书签与密码时勾选导入，否则可跳过。
+        </li>
+        <li>
+          <strong>是否设为默认浏览器</strong>
+          取决于你是否有多个浏览器分工使用的习惯。
+        </li>
+        <li>
+          <strong>登录账号（可选）</strong>
+          需要跨设备同步时登录，不需要同步可暂不登录。
+        </li>
+        <li>
+          <strong>检查更新</strong>
+          进入设置中的“关于”页面，确认当前为较新版本。
+        </li>
+        <li>
+          <strong>整理书签栏</strong>
+          把常用站点固定到书签栏，能显著提升日常进入效率。
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 账号同步 -->
+  <section class="section" id="account">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>账号登录与同步：需要还是不需要</h2>
+        <p>登录账号不是使用浏览器的必要条件。是否登录，取决于你是否有跨设备同步需求。</p>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h3>适合登录的情况</h3>
+          <ul>
+            <li>需要在电脑与手机之间同步书签和密码。</li>
+            <li>经常在不同设备上继续阅读同一批标签页。</li>
+            <li>希望更换设备后快速恢复浏览环境。</li>
+            <li>愿意接受账号体系带来的数据集中管理方式。</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>可以暂不登录的情况</h3>
+          <ul>
+            <li>只在一台设备上使用浏览器。</li>
+            <li>更倾向于本地保存书签与密码。</li>
+            <li>对账号数据留存有额外顾虑。</li>
+            <li>仅把浏览器作为临时工具使用。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 打不开排查 -->
+  <section class="section alt-bg" id="trouble">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>进不去、打不开时的排查顺序</h2>
+        <p>遇到“YANDEX浏览器进入不了”的情况，建议按从简单到复杂的顺序逐项排查，避免盲目重装。</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>现象</th>
+              <th>可能原因</th>
+              <th>建议操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>点击图标没有反应</td>
+              <td>程序进程异常或安装文件损坏</td>
+              <td>先在任务管理器中结束相关进程，再重新打开；仍无效可考虑重新安装。</td>
+            </tr>
+            <tr>
+              <td>打开后空白或一直转圈</td>
+              <td>网络连接异常或代理设置不当</td>
+              <td>检查网络是否正常，查看系统代理与浏览器代理设置是否被误改。</td>
+            </tr>
+            <tr>
+              <td>提示证书或安全警告</td>
+              <td>系统时间错误或站点证书异常</td>
+              <td>先校准系统日期时间，再确认目标站点本身是否可信。</td>
+            </tr>
+            <tr>
+              <td>页面加载一半失败</td>
+              <td>扩展冲突或缓存异常</td>
+              <td>尝试在无痕窗口打开，或暂时停用扩展、清理缓存后重试。</td>
+            </tr>
+            <tr>
+              <td>登录账号失败</td>
+              <td>账号信息或验证环节问题</td>
+              <td>核对账号密码，按提示完成验证；不要向任何第三方透露验证码。</td>
+            </tr>
+            <tr>
+              <td>手机端闪退</td>
+              <td>版本兼容性或存储空间不足</td>
+              <td>更新到较新版本，清理存储空间后重试。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 安全提示 -->
+  <section class="section" id="safe">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>进入与使用中的安全注意事项</h2>
+        <p>浏览器是访问互联网的主要入口，安全习惯比功能多少更重要。</p>
+      </div>
+      <div class="warn">
+        <div class="w-ico">!</div>
+        <div>
+          <h3>警惕仿冒下载页与“破解版”</h3>
+          <p>
+            搜索“YANDEX浏览器进入”时，结果中可能混入仿冒页面或带有捆绑程序的安装包。请核对域名与开发者信息，不要在不熟悉的页面输入账号密码，也不要安装来源不明的“加速版”“修改版”浏览器。任何要求你关闭安全软件再安装的提示，都应视为风险信号。
+          </p>
+        </div>
+      </div>
+
+      <div class="split" style="margin-top:22px;">
+        <div class="panel">
+          <h3>日常使用建议</h3>
+          <ul>
+            <li><strong>保持更新</strong>：及时安装浏览器更新，修复已知安全问题。</li>
+            <li><strong>谨慎授权</strong>：扩展程序索取的权限应与其功能相符。</li>
+            <li><strong>分开使用</strong>：涉及重要账号的操作，尽量在可信设备与网络下进行。</li>
+            <li><strong>定期清理</strong>：清理缓存与不再使用的扩展，减少潜在风险面。</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>账号安全建议</h3>
+          <ul>
+            <li><strong>独立密码</strong>：浏览器账号使用与其他平台不同的密码。</li>
+            <li><strong>开启验证</strong>：如支持两步验证，建议开启。</li>
+            <li><strong>留意设备列表</strong>：定期查看已登录设备，移除陌生设备。</li>
+            <li><strong>公共设备退出</strong>：在他人电脑上使用后务必退出账号。</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section alt-bg" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>关于“YANDEX浏览器进入”的常见问题</h2>
+        <p>以下问题覆盖了大多数用户在进入与初次使用阶段遇到的疑问。</p>
+      </div>
+
+      <div class="faq">
+        <details open>
+          <summary>Yandex 浏览器一定要登录账号才能使用吗？</summary>
+          <div class="answer">不需要。浏览器的基本浏览功能无需登录即可使用，登录主要用于跨设备同步书签、密码、历史记录和标签页。如果你只在一台设备上使用，完全可以不登录。</div>
+        </details>
+        <details>
+          <summary>怎么判断自己下载的是不是官方版本？</summary>
+          <div class="answer">可以从来源渠道、开发者信息、安装包体积和安装过程几个方面判断。官方渠道通常不会要求你关闭安全软件，也不会在安装时默认勾选大量无关软件。若页面存在大量夸张广告或强制跳转，建议直接离开。</div>
+        </details>
+        <details>
+          <summary>进入浏览器后首页被改了，怎么恢复？</summary>
+          <div class="answer">可在浏览器设置中找到启动时打开页面、主页和新标签页相关选项，将其改回你需要的地址。如果修改后又被自动还原，通常说明存在可疑扩展或捆绑程序，需要先移除这些扩展再重新设置。</div>
+        </details>
+        <details>
+          <summary>电脑上打不开，手机上却正常，是什么原因？</summary>
+          <div class="answer">这通常说明问题出在电脑端环境，例如网络代理设置、系统时间、防火墙规则或本地安装文件异常，而不是浏览器本身不可用。可以优先检查代理与网络设置，再考虑重新安装。</div>
+        </details>
+        <details>
+          <summary>可以和其他浏览器同时使用吗？</summary>
+          <div class="answer">可以。多浏览器共存不会互相影响，你可以把不同浏览器用于不同用途，例如一个用于日常浏览、一个用于工作账号。只需注意各自的书签与密码是独立管理的。</div>
+        </details>
+        <details>
+          <summary>浏览器提示更新，是否必须立即更新？</summary>
+          <div class="answer">建议尽快更新。更新通常包含安全修复和兼容性改进。若你正在处理重要事务，也可以稍后手动重启浏览器完成更新，但不建议长期忽略更新提示。</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 相关阅读 -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>继续了解</h2>
+        <p>围绕进入与使用，可以进一步关注以下方向。</p>
+      </div>
+      <div class="related">
+        <a href="#download">
+          <strong>安装包选择</strong>
+          不同系统对应版本的判断方式与注意事项。
+        </a>
+        <a href="#firstrun">
+          <strong>首次设置清单</strong>
+          搜索引擎、导入数据与默认浏览器设置。
+        </a>
+        <a href="#trouble">
+          <strong>故障排查思路</strong>
+          从网络到扩展的逐项检查顺序。
+        </a>
+        <a href="#safe">
+          <strong>安全使用习惯</strong>
+          账号、扩展与公共设备的使用建议。
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Yandex 浏览指南</h4>
+        <p>围绕 Yandex 浏览器的进入方式、安装设置、账号同步与常见问题，整理清晰、可操作的中文使用说明，帮助用户安全顺利地完成从下载到日常使用的全过程。</p>
+      </div>
+      <div>
+        <h4>内容导航</h4>
+        <ul class="footer-links">
+          <li><a href="#enter">进入方式</a></li>
+          <li><a href="#download">下载安装</a></li>
+          <li><a href="#firstrun">首次设置</a></li>
+          <li><a href="#account">账号同步</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>帮助与安全</h4>
+        <ul class="footer-links">
+          <li><a href="#trouble">打不开排查</a></li>
+          <li><a href="#safe">安全提示</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>本页为使用说明类信息页面，内容随浏览器版本更新可能存在差异，请以实际界面为准。</span>
+      <span>请通过官方渠道获取软件，保护账号与设备安全。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('mainNav');
+    if(toggle && nav){
+      toggle.addEventListener('click', function(){
+        nav.classList.toggle('open');
+      });
+      nav.addEventListener('click', function(e){
+        if(e.target.tagName === 'A'){
+          nav.classList.remove('open');
+        }
+      });
+    }
+  })();
+</script>
+
+</body>
+  </html>
